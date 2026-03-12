@@ -1,0 +1,122 @@
+<div class="page-bg">
+  <div class="overlay">
+    <div class="container">
+      <h1>Book Management App</h1>
+
+      <div class="top-actions">
+        <button class="big-btn add-toggle-btn" (click)="toggleAddForm()">
+          {{ showAddForm && !isEditMode ? 'Hide Add Book Form' : 'Add Books' }}
+        </button>
+      </div>
+
+      <div class="card form-card" *ngIf="showAddForm">
+        <h2>{{ isEditMode ? 'Edit Book' : 'Add New Book' }}</h2>
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              [(ngModel)]="formData.title"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input
+              id="author"
+              type="text"
+              name="author"
+              [(ngModel)]="formData.author"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input
+              id="isbn"
+              type="text"
+              name="isbn"
+              [(ngModel)]="formData.isbn"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="publicationDate">Publication Date</label>
+            <input
+              id="publicationDate"
+              type="date"
+              name="publicationDate"
+              [(ngModel)]="formData.publicationDate"
+              required
+            />
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="primary-btn">
+              {{ isEditMode ? 'Update Book' : 'Save Book' }}
+            </button>
+            <button type="button" class="secondary-btn" (click)="cancelForm()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Book List</h2>
+
+        <table *ngIf="books.length > 0; else noBooks">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>ISBN</th>
+              <th>Publication Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books">
+              <td>{{ book.id }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.isbn }}</td>
+              <td>{{ book.publicationDate | date:'yyyy-MM-dd' }}</td>
+              <td>
+                <button class="edit-btn" (click)="editBook(book)">Edit</button>
+                <button class="delete-btn" (click)="deleteBook(book.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noBooks>
+          <p class="empty-text">No books available.</p>
+        </ng-template>
+      </div>
+
+      <div class="modal-backdrop" *ngIf="showModal">
+        <div class="modal-box">
+          <h3>{{ modalTitle }}</h3>
+          <p>{{ modalMessage }}</p>
+
+          <div class="modal-actions" *ngIf="modalType === 'confirm'">
+            <button class="yes-btn" (click)="confirmDelete()">Yes</button>
+            <button class="no-btn" (click)="closeModal()">No</button>
+          </div>
+
+          <div class="modal-actions" *ngIf="modalType !== 'confirm'">
+            <button class="ok-btn" (click)="closeModal()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

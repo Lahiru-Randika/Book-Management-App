@@ -1,0 +1,17 @@
+# Angular
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.angular/
+
+# .NET
+BackendAPI/bin/
+BackendAPI/obj/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Logs
+*.log

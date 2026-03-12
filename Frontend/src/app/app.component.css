@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.page-bg {
+  min-height: 100vh;
+  background-image: url('../assets/books-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.overlay {
+  min-height: 100vh;
+  background: rgba(20, 14, 10, 0.62);
+  padding: 30px 0;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-size: 40px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #3e2c1c;
+}
+
+h3 {
+  margin-top: 0;
+  color: #2f2418;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.big-btn {
+  min-width: 250px;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+.add-toggle-btn {
+  background: linear-gradient(135deg, #8b5e34, #5c3b1e);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.add-toggle-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+.card {
+  background: rgba(255, 248, 240, 0.93);
+  backdrop-filter: blur(5px);
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.form-card {
+  animation: fadeIn 0.25s ease;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #4a3422;
+}
+
+input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d7c3ae;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.94);
+  color: #2f2418;
+}
+
+input:focus {
+  outline: none;
+  border-color: #8b5e34;
+  box-shadow: 0 0 0 3px rgba(139, 94, 52, 0.15);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #8b5e34, #6f4724);
+}
+
+.secondary-btn {
+  background-color: #7a6a58;
+}
+
+.edit-btn {
+  background-color: #d18b2c;
+  margin-right: 8px;
+}
+
+.delete-btn {
+  background-color: #b84034;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+table th,
+table td {
+  padding: 13px 12px;
+  border: 1px solid #dbcab9;
+  text-align: left;
+}
+
+table th {
+  background: linear-gradient(135deg, #7a4c28, #5a361b);
+  color: white;
+}
+
+table td {
+  background-color: rgba(255, 255, 255, 0.78);
+  color: #2f2418;
+}
+
+.empty-text {
+  color: #5b4634;
+  font-weight: 500;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:#00000073;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 430px;
+  background: #fff8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  text-align: center;
+  animation: popupIn 0.2s ease;
+  border: 1px solid #ead9c6;
+}
+
+.modal-box p {
+  margin: 15px 0 20px;
+  color: #4b3928;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ok-btn,
+.yes-btn,
+.no-btn {
+  min-width: 90px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+.ok-btn,
+.yes-btn {
+  background: linear-gradient(135deg, #8b5e34, #6f4724);
+}
+
+.no-btn {
+  background-color: #7a6a58;
+}
+
+@keyframes popupIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
